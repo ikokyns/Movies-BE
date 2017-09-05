@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Movie extends Model
 {
@@ -24,5 +25,9 @@ class Movie extends Model
     public function setGenresAttribute($value)
     {
         $this->attributes['genres'] = json_encode($value);
+    }
+
+    public static function search($value){
+        return Movie::where('name', 'like', "%$value->term%")->get();
     }
 }

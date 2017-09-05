@@ -16,8 +16,11 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
-        return Movie::where('name', 'like', "%$request->name%")->get();
-
+        if(Movie::search($request) == []){
+            return Movie::search($request);
+        } else{
+            return Movie::all();
+        };
     }
 
     /**
