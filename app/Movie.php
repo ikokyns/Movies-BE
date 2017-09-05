@@ -28,6 +28,13 @@ class Movie extends Model
     }
 
     public static function search($value){
-        return Movie::where('name', 'like', "%$value->term%")->get();
+        // $all = Movie::all();
+        $result = Movie::where('name', 'like', "%$value->term%")->get();
+        
+        // if($result == []){
+        //     return $all;
+        // }else{
+        return $result;
+        // };
     }
 }

@@ -16,11 +16,12 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
-        if(Movie::search($request) == []){
-            return Movie::search($request);
-        } else{
-            return Movie::all();
+        $result = Movie::search($request);
+        if($result == []){
+            return 'sasasa';
         };
+
+        return $result;
     }
 
     /**
