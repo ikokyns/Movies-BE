@@ -22,6 +22,7 @@ class CreateMoviesTable extends Migration
             $table->date('releaseDate');
             $table->text('genres');
             $table->timestamps();
+            $table->unique(['name', 'releaseDate']);  
         });
     }
 
