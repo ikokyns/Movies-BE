@@ -8,7 +8,12 @@ class Movie extends Model
 {
 	
     protected $fillable = [
-
+        'name',
+        'director',
+        'imageURL',
+        'duration',
+        'releaseDate',
+        'genres'
     ];
 
 	public function getGenresAttribute($value)

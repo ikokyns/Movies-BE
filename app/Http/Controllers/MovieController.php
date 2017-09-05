@@ -14,7 +14,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        return Movie:: all();
     }
 
     /**
@@ -35,7 +35,7 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Movie::create($request->all());
     }
 
     /**
@@ -44,9 +44,9 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show(Movie $movie)
+    public function show($id)
     {
-        //
+        return Movie::findOrFail($id);
     }
 
     /**
@@ -67,9 +67,11 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Request $request, $id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        $movie->update($request->all());
+        return $movie;
     }
 
     /**
@@ -80,6 +82,7 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
     }
 }
