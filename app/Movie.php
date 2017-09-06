@@ -27,14 +27,7 @@ class Movie extends Model
         $this->attributes['genres'] = json_encode($value);
     }
 
-    public static function search($value){
-        // $all = Movie::all();
-        $result = Movie::where('name', 'like', "%$value->term%")->get();
-        
-        // if($result == []){
-        //     return $all;
-        // }else{
-        return $result;
-        // };
+    public static function search($term, $take, $skip){
+        return Movie::where('name', 'like', "%$term%")->skip($skip)->take($take)->get();
     }
 }

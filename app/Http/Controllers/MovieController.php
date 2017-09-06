@@ -16,12 +16,7 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
-        $result = Movie::search($request);
-        if($result == []){
-            return 'sasasa';
-        };
-
-        return $result;
+        return Movie::search(request('term'), request('take', 10), request('skip', 0));
     }
 
     /**
